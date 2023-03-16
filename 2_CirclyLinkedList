@@ -1,0 +1,165 @@
+#include<iostream>
+using namespace std;
+
+struct node {
+	node* next;
+	int data;
+};
+
+class linkedList {
+public:
+	linkedList();
+	void append(int inputValue);
+	void deletion(int idx);
+	void insertion(int idx, int inputValue);
+	void print();
+	void at(int idx);
+	bool isEmpty();
+private:
+	node* head;
+	node* tail;
+	node* cursor;
+	int listSize;
+};
+
+linkedList::linkedList() {
+
+	head = NULL;
+	tail = NULL;
+	cursor = NULL;
+	listSize = 0;
+}
+
+void linkedList::append(int inputValue) {
+	node* newNode = new node;
+	newNode->data = inputValue;
+
+	if (listSize == 0) {
+		head = tail = cursor = newNode;
+		newNode->next = newNode;
+	}
+	else {
+		tail->next = newNode;
+		newNode->next = head;
+		tail = newNode;
+	}
+	tail->next = newNode;
+	newNode->next = head;
+	tail = newNode;
+	
+	listSize++;
+}
+
+void linkedList::deletion(int idx) {
+	node* curNode = head;
+	node* preNode = head;
+	if (idx != 0) {
+		for (int i = 0; i < idx; i++) {
+			preNode = curNode;
+			curNode = preNode->next;
+		}
+	}
+	preNode->next = curNode->next;
+	delete curNode;
+
+	listSize--;
+}
+void linkedList::insertion(int idx, int inputValue) {
+	
+
+	node* curNode = head;
+	if (isEmpty()) {
+		append(inputValue);
+		return;
+	}	
+	else if(idx == (listSize)){
+		append(inputValue);
+	}
+	else if (idx == 0) {
+		node* newNode = new node;
+		newNode->data = inputValue;
+		newNode->next = head;
+		tail->next = newNode;
+		head = newNode;
+	}
+	else {
+		node* newNode = new node;
+		newNode->data = inputValue;
+		node* curNode = head;
+		for (int i = 0; i < idx-1; i++) {
+			curNode = curNode->next;
+		}
+		newNode->next = curNode->next;
+		curNode->next = newNode;
+
+	}
+
+
+	listSize++;
+}
+void linkedList::print() {
+	if (isEmpty()) {
+		return;
+	}
+	node* curNode = head;
+	for (int i = 0; i < listSize - 1; i++) {
+		cout << curNode->data << ' ';
+		curNode = curNode->next;
+	}
+	cout << curNode->data << endl;
+
+}
+void linkedList::at(int idx) {
+	node* curNode = head;
+	node* preNode = head;
+	if (idx != 0) {
+		for (int i = 0; i < idx ; i++) {
+			preNode = curNode;
+			curNode = preNode->next;
+		}
+	}
+	cout << curNode->data << endl;
+}
+
+bool linkedList::isEmpty() {
+	if (listSize == 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+
+
+int main() {
+	linkedList lList;
+	string inputCommand = "";
+	int inputValue = 0;
+	int idx = 0;
+	while (true) {
+		cin >> inputCommand;
+		if (inputCommand == "insertion") {
+			cin >> idx >> inputValue;
+			lList.insertion(idx, inputValue);
+		}
+		else if (inputCommand == "append") {
+			cin >> inputValue;
+			lList.append(inputValue);
+		}
+		else if (inputCommand == "print") {
+			lList.print();
+		}
+		else if (inputCommand == "deletion") {
+			cin >> idx;
+			lList.deletion(idx);
+		}
+		else if (inputCommand == "at") {
+			cin >> idx;
+			lList.at(idx);
+		}
+
+	}
+	return 0;
+
+}
