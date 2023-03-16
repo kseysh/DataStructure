@@ -18,7 +18,7 @@ public:
 	void push(int inputValue)
 	{
 		if (topIndex == stackSize - 1) {
-			cout << "½ºÅÃÀÌ ²Ë Ã¡½À´Ï´Ù.\n";
+			cout << "Â½ÂºÃ…ÃƒÃ€ÃŒ Â²Ã‹ ÃƒÂ¡Â½Ã€Â´ÃÂ´Ã™.\n";
 		}
 		else {
 			stackArray[++topIndex] = inputValue;
