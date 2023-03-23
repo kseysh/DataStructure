@@ -27,7 +27,7 @@ public:
 	node* header;
 	node* frontNode;
 	node* rearNode;
-	int queueSize; //Å¥ÀÇ Å©±â¸¦ ÀúÀåÇÏ´Â º¯¼ö
+	int queueSize; //íì˜ í¬ê¸°ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
 	node* trailer;
 	int count;
 };
@@ -196,7 +196,7 @@ int main() {
 	int targetIndex = 0;
 	int inputValue = 0;
 	listQueue queue;
-	cin >> queueSize >> popCount; // ¼ø¼­ È®ÀÎÇÏ±â
+	cin >> queueSize >> popCount; // ìˆœì„œ í™•ì¸í•˜ê¸°
 	queue.makeQueue(queueSize);
 	for (int i = 0; i < popCount; i++) {
 		cin >> popTarget;
