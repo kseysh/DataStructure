@@ -19,11 +19,11 @@ public:
 		}
 	}// for test please delete
 private:
-	int* arr; // Å¥ÀÇ ¿ø¼Ò¸¦ ÀúÀåÇÏ´Â ¹è¿­
-	int capacity; // Å¥ÀÇ ÃÖ´ë Å©±â¸¦ ÀúÀåÇÏ´Â º¯¼ö
-	int frontIndex; // ¹è¿­¿¡¼­ Å¥ÀÇ frontÀÇ À§Ä¡¸¦ ÀúÀåÇÏ´Â º¯¼ö
-	int rearIndex; // ¹è¿­¿¡¼­ Å¥ÀÇ rearÀÇ À§Ä¡ + 1 À» ÀúÀåÇÏ´Â º¯¼ö 
-	int queueSize; //Å¥ÀÇ Å©±â¸¦ ÀúÀåÇÏ´Â º¯¼ö
+	int* arr; // íì˜ ì›ì†Œë¥¼ ì €ì¥í•˜ëŠ” ë°°ì—´
+	int capacity; // íì˜ ìµœëŒ€ í¬ê¸°ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
+	int frontIndex; // ë°°ì—´ì—ì„œ íì˜ frontì˜ ìœ„ì¹˜ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
+	int rearIndex; // ë°°ì—´ì—ì„œ íì˜ rearì˜ ìœ„ì¹˜ + 1 ì„ ì €ì¥í•˜ëŠ” ë³€ìˆ˜ 
+	int queueSize; //íì˜ í¬ê¸°ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
 };
 arrayQueue::arrayQueue(int capacity) {
 	this->capacity = capacity;
@@ -141,7 +141,7 @@ int main() {
 	string command = "";
 	int inputValue = 0;
 
-	cin >> commandCount >> capacity; // ¼ø¼­ È®ÀÎÇÏ±â
+	cin >> commandCount >> capacity; // ìˆœì„œ í™•ì¸í•˜ê¸°
 
 	arrayQueue queue(capacity);
 
@@ -195,7 +195,7 @@ int main() {
 			queue.printTest();
 		}
 		else {
-			cout << "Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù"<<endl;
+			cout << "ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤"<<endl;
 		}
 
 	}
