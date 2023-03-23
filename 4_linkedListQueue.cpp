@@ -24,7 +24,7 @@ private:
 	node* header;
 	node* frontNode;
 	node* rearNode;
-	int queueSize; //Å¥ÀÇ Å©±â¸¦ ÀúÀåÇÏ´Â º¯¼ö
+	int queueSize; //íì˜ í¬ê¸°ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
 	node* trailer;
 	int listSize;
 };
@@ -152,7 +152,7 @@ int main() {
 	string command = "";
 	int inputValue = 0;
 
-	cin >> commandCount; // ¼ø¼­ È®ÀÎÇÏ±â
+	cin >> commandCount; // ìˆœì„œ í™•ì¸í•˜ê¸°
 
 	listQueue queue;
 
@@ -203,7 +203,7 @@ int main() {
 			queue.print();
 		}
 		else {
-			cout << "Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù" << endl;
+			cout << "ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤" << endl;
 		}
 
 	}
