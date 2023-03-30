@@ -8,7 +8,7 @@ private:
 	int* arr;
 	int capacity;
 	int size;
-	int front, rear;	// front: ¹è¿­ÀÇ Ã¹¹øÂ° ¿ø¼Ò, rear: ¹è¿­ÀÇ ¸¶Áö¸· ¿ø¼ÒÀÇ µÚ
+	int front, rear;	// front: ë°°ì—´ì˜ ì²«ë²ˆì§¸ ì›ì†Œ, rear: ë°°ì—´ì˜ ë§ˆì§€ë§‰ ì›ì†Œì˜ ë’¤
 
 public:
 	Vector()
