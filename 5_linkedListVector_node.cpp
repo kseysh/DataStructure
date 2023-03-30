@@ -15,10 +15,10 @@ public:
 	int size();
 	node* begin();
 	node* end();
-	void at(node* position); // node·Î Á¢±ÙÇÏ´Â at
-	void set(node* position, int data); // node·Î Á¢±ÙÇÏ´Â set
-	void erase(node* position); // node·Î Á¢±ÙÇÏ´Â erase
-	void insert(node* position, int data); // node·Î Á¢±ÙÇÏ´Â insert
+	void at(node* position); // nodeë¡œ ì ‘ê·¼í•˜ëŠ” at
+	void set(node* position, int data); // nodeë¡œ ì ‘ê·¼í•˜ëŠ” set
+	void erase(node* position); // nodeë¡œ ì ‘ê·¼í•˜ëŠ” erase
+	void insert(node* position, int data); // nodeë¡œ ì ‘ê·¼í•˜ëŠ” insert
 	void push_back(int data);
 	void push_front(int data);
 	void pop_back();
@@ -57,16 +57,16 @@ node* nodeList::end() {
 
 void nodeList::at(node* position) {
 	if (position == NULL) {
-		cout << -1 << endl; // targetÀÌ NULLÀÎ °æ¿ì -1 Ãâ·Â 
+		cout << -1 << endl; // targetì´ NULLì¸ ê²½ìš° -1 ì¶œë ¥ 
 		return;
 	}
 	else {
-		cout << position->data << endl; // ÇØ´çÇÏ´Â µ¥ÀÌÅÍ °ª Ãâ·Â
+		cout << position->data << endl; // í•´ë‹¹í•˜ëŠ” ë°ì´í„° ê°’ ì¶œë ¥
 	}
 }
 void nodeList::set(node* position, int data) {
 	if (position==NULL) {
-		cout << -1 << endl; // targetÀÌ NULLÀÎ °æ¿ì -1 Ãâ·Â
+		cout << -1 << endl; // targetì´ NULLì¸ ê²½ìš° -1 ì¶œë ¥
 		return;
 	}
 	position->data = data;
@@ -129,7 +129,7 @@ void nodeList::pop_front() {
 
 void nodeList::print() {
 	if (empty()) {
-		cout << "-1" << endl; // ºñ¾îÀÖÀ» °æ¿ì -1 Ãâ·Â
+		cout << "-1" << endl; // ë¹„ì–´ìžˆì„ ê²½ìš° -1 ì¶œë ¥
 		return;
 	}
 	node* curNode = header;
@@ -179,10 +179,10 @@ int main() {
 		}
 		else if (command == "empty") {
 			if (list.empty()) {
-				cout << 1 << endl; // ºñ¾îÀÖÀ» °æ¿ì 1 Ãâ·Â
+				cout << 1 << endl; // ë¹„ì–´ìžˆì„ ê²½ìš° 1 ì¶œë ¥
 			}
 			else {
-				cout << 0 << endl; // ºñ¾îÀÖÁö ¾ÊÀ» °æ¿ì 0 Ãâ·Â
+				cout << 0 << endl; // ë¹„ì–´ìžˆì§€ ì•Šì„ ê²½ìš° 0 ì¶œë ¥
 			}
 		}
 		else if (command == "print") {
@@ -195,7 +195,7 @@ int main() {
 			list.pop_back();
 		}
 		else {
-			cout << "Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù" << endl; // command Àß¸ø ÀÔ·ÂÇÑ °æ¿ì
+			cout << "ìž˜ëª» ìž…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤" << endl; // command ìž˜ëª» ìž…ë ¥í•œ ê²½ìš°
 		}
 	}
 
