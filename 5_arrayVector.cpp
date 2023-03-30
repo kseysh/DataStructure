@@ -17,10 +17,10 @@ public:
 	void pop_front();
 	void print();
 private:
-	int capacity; // º¤ÅÍÀÇ ÃÖ´ë Å©±â
-	int vectorSize = 0; // º¤ÅÍÀÇ ÇöÀç Å©±â
+	int capacity; // ë²¡í„°ì˜ ìµœëŒ€ í¬ê¸°
+	int vectorSize = 0; // ë²¡í„°ì˜ í˜„ì¬ í¬ê¸°
 	int* arr;
-	void reserve(int size); // º¤ÅÍÀÇ ÃÖ´ë Å©±â¸¦ size·Î º¯°æÇÏ´Â ÇÔ¼ö
+	void reserve(int size); // ë²¡í„°ì˜ ìµœëŒ€ í¬ê¸°ë¥¼ sizeë¡œ ë³€ê²½í•˜ëŠ” í•¨ìˆ˜
 };
 
 arrayVector::arrayVector() {
@@ -36,26 +36,26 @@ int arrayVector::size() {
 }
 void arrayVector::at(int index) {
 	if (index < 0 || vectorSize <= index) {
-		cout << -1 << endl; // ÇØ´çÇÏ´Â ÀÎµ¦½º °ªÀÌ ¾ø´Â °æ¿ì -1 Ãâ·Â 
+		cout << -1 << endl; // í•´ë‹¹í•˜ëŠ” ì¸ë±ìŠ¤ ê°’ì´ ì—†ëŠ” ê²½ìš° -1 ì¶œë ¥ 
 		return;
 	}
 	else {
-		cout << arr[index] << endl; // ÇØ´çÇÏ´Â ÀÎµ¦½º °ª Ãâ·Â
+		cout << arr[index] << endl; // í•´ë‹¹í•˜ëŠ” ì¸ë±ìŠ¤ ê°’ ì¶œë ¥
 	}
 }
 void arrayVector::set(int index, int data) {
 	if (index < 0 || vectorSize <= index) {
-		cout << -1 << endl; // ÇØ´çÇÏ´Â ÀÎµ¦½º °ªÀÌ ¾ø´Â °æ¿ì -1 Ãâ·Â
+		cout << -1 << endl; // í•´ë‹¹í•˜ëŠ” ì¸ë±ìŠ¤ ê°’ì´ ì—†ëŠ” ê²½ìš° -1 ì¶œë ¥
 		return;
 	}
 	arr[index] = data;
 }
 void arrayVector::erase(int index) {
 	if (index < 0 || vectorSize <= index) {
-		cout << -1 << endl; //ÇØ´çÇÏ´Â ÀÎµ¦½º °ªÀÌ ¾ø´Â °æ¿ì -1 Ãâ·Â
+		cout << -1 << endl; //í•´ë‹¹í•˜ëŠ” ì¸ë±ìŠ¤ ê°’ì´ ì—†ëŠ” ê²½ìš° -1 ì¶œë ¥
 		return; 
 	}
-	cout << arr[index] << endl; // »èÁ¦ÇÒ °ª Ãâ·Â
+	cout << arr[index] << endl; // ì‚­ì œí•  ê°’ ì¶œë ¥
 	for (int i = index + 1; i < vectorSize; i++) {
 		arr[i - 1] = arr[i];
 	}
@@ -63,7 +63,7 @@ void arrayVector::erase(int index) {
 }
 void arrayVector::insert(int index, int data) {
 	if (index < 0 || vectorSize < index) {
-		cout << -1 << endl;//ÇØ´çÇÏ´Â ÀÎµ¦½º °ªÀÌ ¾ø´Â °æ¿ì -1 Ãâ·Â
+		cout << -1 << endl;//í•´ë‹¹í•˜ëŠ” ì¸ë±ìŠ¤ ê°’ì´ ì—†ëŠ” ê²½ìš° -1 ì¶œë ¥
 		return;
 	}
 	if (vectorSize == capacity) {
@@ -106,7 +106,7 @@ void arrayVector::pop_front() {
 
 void arrayVector::print() {
 	if (empty()) {
-		cout << "-1" << endl; // ºñ¾îÀÖÀ» °æ¿ì -1 Ãâ·Â
+		cout << "-1" << endl; // ë¹„ì–´ìˆì„ ê²½ìš° -1 ì¶œë ¥
 		return;
 	}
 	for (int i = 0; i < vectorSize; i++) {
@@ -153,10 +153,10 @@ int main() {
 		}
 		else if (command == "empty") {
 			if (vector.empty()) {
-				cout << 1 << endl; // ºñ¾îÀÖÀ» °æ¿ì 1 Ãâ·Â
+				cout << 1 << endl; // ë¹„ì–´ìˆì„ ê²½ìš° 1 ì¶œë ¥
 			}
 			else {
-				cout << 0 << endl; // ºñ¾îÀÖÁö ¾ÊÀ» °æ¿ì 0 Ãâ·Â
+				cout << 0 << endl; // ë¹„ì–´ìˆì§€ ì•Šì„ ê²½ìš° 0 ì¶œë ¥
 			}
 		}
 		else if (command == "print") {
@@ -169,7 +169,7 @@ int main() {
 			vector.pop_back();
 		}
 		else {
-			cout << "Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù" << endl; // command Àß¸ø ÀÔ·ÂÇÑ °æ¿ì
+			cout << "ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤" << endl; // command ì˜ëª» ì…ë ¥í•œ ê²½ìš°
 		}
 	}
 
