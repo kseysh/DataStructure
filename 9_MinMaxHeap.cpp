@@ -15,23 +15,23 @@ public:
 		data1 = data2;
 		data2 = tmp;
 	}
-	void upheap(int data) { //leaf¸¦ ³Ö´Â´Ù. ¿©±â¼± ¸¶Áö¸· ¿ø¼ÒÀÎµ¦½º¸¦ ³ÖÀ½
+	void upheap(int data) { //leafë¥¼ ë„£ëŠ”ë‹¤. ì—¬ê¸°ì„  ë§ˆì§€ë§‰ ì›ì†Œì¸ë±ìŠ¤ë¥¼ ë„£ìŒ
 		if (v[data] < v[data / 2]) {
-			swap(v[data], v[data / 2]); //±× ÀÚ½Ä°ú ºÎ¸ğÀÇ °ªÀ»¹Ù²Ù°í
-			upheap(data / 2); //±× ºÎ¸ğÀÎµ¦½º¸¦ Áà¼­ »õ·Ó°Ô ¹Ù²ï ºÎ¸ğÀÇ °ª°ú ±× ºÎ¸ğÀÇºÎ¸ğ°ªÀ» ºñ±³ÇÏ°Ô ¹İº¹ÇÔ
+			swap(v[data], v[data / 2]); //ê·¸ ìì‹ê³¼ ë¶€ëª¨ì˜ ê°’ì„ë°”ê¾¸ê³ 
+			upheap(data / 2); //ê·¸ ë¶€ëª¨ì¸ë±ìŠ¤ë¥¼ ì¤˜ì„œ ìƒˆë¡­ê²Œ ë°”ë€ ë¶€ëª¨ì˜ ê°’ê³¼ ê·¸ ë¶€ëª¨ì˜ë¶€ëª¨ê°’ì„ ë¹„êµí•˜ê²Œ ë°˜ë³µí•¨
 		}
 		else {}
 	}
 
-	void downheap(int data) { //root ¿ø¼Ò ÀÎµ¦½º¸¦ ³ÖÀ½
-		if (data * 2 <= heap_size && data * 2 + 1 > heap_size) { //¿ŞÂÊ ÀÚ½Ä¸¸ ÀÖÀ» ¶§
+	void downheap(int data) { //root ì›ì†Œ ì¸ë±ìŠ¤ë¥¼ ë„£ìŒ
+		if (data * 2 <= heap_size && data * 2 + 1 > heap_size) { //ì™¼ìª½ ìì‹ë§Œ ìˆì„ ë•Œ
 			if (v[data] > v[data * 2]) {
 				swap(v[data], v[data * 2]);
 				downheap(data * 2);
 			}
 			else { return; }
 		}
-		else if (data * 2 <= heap_size && data * 2 + 1 <= heap_size) { //¿ŞÂÊ, ¿À¸¥ÂÊ ÀÚ½Ä ´Ù ÀÖÀ» ¶§
+		else if (data * 2 <= heap_size && data * 2 + 1 <= heap_size) { //ì™¼ìª½, ì˜¤ë¥¸ìª½ ìì‹ ë‹¤ ìˆì„ ë•Œ
 			if (v[data] > v[data * 2] || v[data] > v[data * 2 + 1]) {
 				if (v[data * 2] > v[data * 2 + 1]) {
 					swap(v[data], v[data * 2 + 1]);
@@ -45,7 +45,7 @@ public:
 			}
 			else { return; }
 		}
-		else { //µÑ´Ù ¾øÀ» ¶§
+		else { //ë‘˜ë‹¤ ì—†ì„ ë•Œ
 			return;
 		}
 
@@ -59,7 +59,7 @@ public:
 		else {
 			heap_size++;
 			v.push_back(e);
-			upheap(heap_size); //¹æ±İ ³Ö¾îÁØ ¸¶Áö¸· ¿ø¼ÒÀÎµ¦½º¸¦ ´øÁ®ÁÜ
+			upheap(heap_size); //ë°©ê¸ˆ ë„£ì–´ì¤€ ë§ˆì§€ë§‰ ì›ì†Œì¸ë±ìŠ¤ë¥¼ ë˜ì ¸ì¤Œ
 		}
 	}
 
@@ -72,7 +72,7 @@ public:
 			swap(v[1], v[heap_size]);
 			v.pop_back();
 			heap_size--;
-			downheap(1); //1À» ³Ñ±è
+			downheap(1); //1ì„ ë„˜ê¹€
 			return result;
 		}
 	}
@@ -111,23 +111,23 @@ public:
 		data1 = data2;
 		data2 = tmp;
 	}
-	void upheap(int data) { //External Ä£±¸µéÀ» ³Ö¾îÁÙ²¨ÀÓ,¿©±â¼± ¸¶Áö¸· ¿ø¼ÒÀÎµ¦½º¸¦ ³ÖÀ½
+	void upheap(int data) { //External ì¹œêµ¬ë“¤ì„ ë„£ì–´ì¤„êº¼ì„,ì—¬ê¸°ì„  ë§ˆì§€ë§‰ ì›ì†Œì¸ë±ìŠ¤ë¥¼ ë„£ìŒ
 		if (v[data] > v[data / 2]) {
-			swap(v[data], v[data / 2]); //±× ÀÚ½Ä°ú ºÎ¸ğÀÇ °ªÀ»¹Ù²Ù°í
-			upheap(data / 2); //±× ºÎ¸ğÀÎµ¦½º¸¦ Áà¼­ »õ·Ó°Ô ¹Ù²ï ºÎ¸ğÀÇ °ª°ú ±× ºÎ¸ğÀÇºÎ¸ğ°ªÀ» ºñ±³ÇÏ°Ô ¹İº¹ÇÔ
+			swap(v[data], v[data / 2]); //ê·¸ ìì‹ê³¼ ë¶€ëª¨ì˜ ê°’ì„ë°”ê¾¸ê³ 
+			upheap(data / 2); //ê·¸ ë¶€ëª¨ì¸ë±ìŠ¤ë¥¼ ì¤˜ì„œ ìƒˆë¡­ê²Œ ë°”ë€ ë¶€ëª¨ì˜ ê°’ê³¼ ê·¸ ë¶€ëª¨ì˜ë¶€ëª¨ê°’ì„ ë¹„êµí•˜ê²Œ ë°˜ë³µí•¨
 		}
 		else {}
 	}
 
-	void downheap(int data) { //root ¿ø¼Ò ÀÎµ¦½º¸¦ ³ÖÀ½
-		if (data * 2 <= heap_size && data * 2 + 1 > heap_size) { //¿ŞÂÊ ÀÚ½Ä¸¸ ÀÖÀ» ¶§
+	void downheap(int data) { //root ì›ì†Œ ì¸ë±ìŠ¤ë¥¼ ë„£ìŒ
+		if (data * 2 <= heap_size && data * 2 + 1 > heap_size) { //ì™¼ìª½ ìì‹ë§Œ ìˆì„ ë•Œ
 			if (v[data] < v[data * 2]) {
 				swap(v[data], v[data * 2]);
 				downheap(data * 2);
 			}
 			else { return; }
 		}
-		else if (data * 2 <= heap_size && data * 2 + 1 <= heap_size) { //¿ŞÂÊ, ¿À¸¥ÂÊ ÀÚ½Ä ´Ù ÀÖÀ» ¶§
+		else if (data * 2 <= heap_size && data * 2 + 1 <= heap_size) { //ì™¼ìª½, ì˜¤ë¥¸ìª½ ìì‹ ë‹¤ ìˆì„ ë•Œ
 			if (v[data] < v[data * 2] || v[data] < v[data * 2 + 1]) {
 				if (v[data * 2] >= v[data * 2 + 1]) {
 					swap(v[data], v[data * 2]);
@@ -141,7 +141,7 @@ public:
 			}
 			else { return; }
 		}
-		else { //µÑ´Ù ¾øÀ» ¶§
+		else { //ë‘˜ë‹¤ ì—†ì„ ë•Œ
 			return;
 		}
 
@@ -155,7 +155,7 @@ public:
 		else {
 			heap_size++;
 			v.push_back(e);
-			upheap(heap_size); //¹æ±İ ³Ö¾îÁØ ¸¶Áö¸· ¿ø¼ÒÀÎµ¦½º¸¦ ´øÁ®ÁÜ
+			upheap(heap_size); //ë°©ê¸ˆ ë„£ì–´ì¤€ ë§ˆì§€ë§‰ ì›ì†Œì¸ë±ìŠ¤ë¥¼ ë˜ì ¸ì¤Œ
 		}
 	}
 
@@ -168,7 +168,7 @@ public:
 			swap(v[1], v[heap_size]);
 			v.pop_back();
 			heap_size--;
-			downheap(1); //1À» ³Ñ±è
+			downheap(1); //1ì„ ë„˜ê¹€
 			return result;
 		}
 	}
