@@ -5,12 +5,12 @@ using namespace std;
 
 struct compare {
 	bool operator()(const int& e1, const int& e2) {
-		//operator() ÇÔ¼ö´Â °ıÈ£ ¿¬»êÀÚ ¿À¹ö·Îµù ÇÔ¼öÀÓ.
+		//operator() í•¨ìˆ˜ëŠ” ê´„í˜¸ ì—°ì‚°ì ì˜¤ë²„ë¡œë”© í•¨ìˆ˜ì„.
 		return e1 < e2;
 	}
 };
 
-class sortedSeqPQ { // »ğÀÔ Á¤·Ä
+class sortedSeqPQ { // ì‚½ì… ì •ë ¬
 public:
 	vector<int> seq;
 
@@ -84,10 +84,10 @@ int main() {
 		}
 		else if (command == "empty") {
 			if (pq.empty()) {
-				cout << 1 << endl; // ºñ¾îÀÖ´Ù¸é 1 ¹İÈ¯
+				cout << 1 << endl; // ë¹„ì–´ìˆë‹¤ë©´ 1 ë°˜í™˜
 			}
 			else {
-				cout << 0 << endl; // ¾Èºñ¾îÀÖ´Ù¸é 0 ¹İÈ¯
+				cout << 0 << endl; // ì•ˆë¹„ì–´ìˆë‹¤ë©´ 0 ë°˜í™˜
 			}
 
 		}
