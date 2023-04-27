@@ -7,7 +7,7 @@ public:
 	int heap_size;
 
 	Heap() {
-		v.push_back(-1);//heapÀº ÀÌ°Å ²À ÇØÁà¾ßÇÔ Ã¹Ä­ ¶ç¿ö³õ´Âµ¥ ±× °ªÀº -1·Î
+		v.push_back(-1);//heapì€ ì´ê±° ê¼­ í•´ì¤˜ì•¼í•¨ ì²«ì¹¸ ë„ì›Œë†“ëŠ”ë° ê·¸ ê°’ì€ -1ë¡œ
 		this->heap_size = 0;
 	}
 	void swap(int& data1, int& data2) {
@@ -15,29 +15,29 @@ public:
 		data1 = data2;
 		data2 = tmp;
 	}
-	void upheap(int data) { // leaf¸¦ ³Ö´Â´Ù. ¿©±â¼± ¸¶Áö¸· ¿ø¼ÒÀÎµ¦½º¸¦ ³ÖÀ½
+	void upheap(int data) { // leafë¥¼ ë„£ëŠ”ë‹¤. ì—¬ê¸°ì„  ë§ˆì§€ë§‰ ì›ì†Œì¸ë±ìŠ¤ë¥¼ ë„£ìŒ
 		if (v[data] < v[data / 2]) {
-			swap(v[data], v[data / 2]); //±× ÀÚ½Ä°ú ºÎ¸ğÀÇ °ªÀ»¹Ù²Ù°í
-			upheap(data / 2); //±× ºÎ¸ğ ÀÎµ¦½º¸¦ Áà¼­ »õ·Ó°Ô ¹Ù²ï ºÎ¸ğÀÇ °ª°ú ±× ºÎ¸ğÀÇ ºÎ¸ğ°ªÀ» ºñ±³ÇÏ°Ô ¹İº¹ÇÔ
+			swap(v[data], v[data / 2]); //ê·¸ ìì‹ê³¼ ë¶€ëª¨ì˜ ê°’ì„ë°”ê¾¸ê³ 
+			upheap(data / 2); //ê·¸ ë¶€ëª¨ ì¸ë±ìŠ¤ë¥¼ ì¤˜ì„œ ìƒˆë¡­ê²Œ ë°”ë€ ë¶€ëª¨ì˜ ê°’ê³¼ ê·¸ ë¶€ëª¨ì˜ ë¶€ëª¨ê°’ì„ ë¹„êµí•˜ê²Œ ë°˜ë³µí•¨
 		}
 		else {}
 	}
 
-	void downheap(int data) { //root ¿ø¼Ò ÀÎµ¦½º¸¦ ³ÖÀ½
-		if (data * 2 == heap_size) { //¿ŞÂÊ ÀÚ½Ä¸¸ ÀÖÀ» ¶§
+	void downheap(int data) { //root ì›ì†Œ ì¸ë±ìŠ¤ë¥¼ ë„£ìŒ
+		if (data * 2 == heap_size) { //ì™¼ìª½ ìì‹ë§Œ ìˆì„ ë•Œ
 			if (v[data] > v[data * 2]) {
 				swap(v[data], v[data * 2]);
 				downheap(data * 2);
 			}
 			else { return; }
 		}
-		else if (data * 2 <= heap_size && data * 2 + 1 <= heap_size) { //¿ŞÂÊ, ¿À¸¥ÂÊ ÀÚ½Ä ´Ù ÀÖÀ» ¶§
+		else if (data * 2 <= heap_size && data * 2 + 1 <= heap_size) { //ì™¼ìª½, ì˜¤ë¥¸ìª½ ìì‹ ë‹¤ ìˆì„ ë•Œ
 			if (v[data] > v[data * 2] || v[data] > v[data * 2 + 1]) {
 				if (v[data * 2] > v[data * 2 + 1]) {
 					swap(v[data], v[data * 2 + 1]);
 					downheap(data * 2 + 1);
 				}
-				else if (v[data * 2] <= v[data * 2 + 1]) {//ÀÚ½ÄµéÀÇ °ªÀÌ µ¿ÀÏÇÒ °æ¿ì, ¿ŞÂÊ ÀÚ½ÄÀ» Á¶ÀıÇÑ´Ù.
+				else if (v[data * 2] <= v[data * 2 + 1]) {//ìì‹ë“¤ì˜ ê°’ì´ ë™ì¼í•  ê²½ìš°, ì™¼ìª½ ìì‹ì„ ì¡°ì ˆí•œë‹¤.
 					swap(v[data], v[data * 2]);
 					downheap(data * 2);
 				}
@@ -45,7 +45,7 @@ public:
 			}
 			else { return; }
 		}
-		else { //µÑ´Ù ¾øÀ» ¶§
+		else { //ë‘˜ë‹¤ ì—†ì„ ë•Œ
 			return;
 		}
 
@@ -59,7 +59,7 @@ public:
 		else {
 			heap_size++;
 			v.push_back(e);
-			upheap(heap_size); //¹æ±İ ³Ö¾îÁØ ¸¶Áö¸· ¿ø¼ÒÀÎµ¦½º¸¦ ´øÁ®ÁÜ
+			upheap(heap_size); //ë°©ê¸ˆ ë„£ì–´ì¤€ ë§ˆì§€ë§‰ ì›ì†Œì¸ë±ìŠ¤ë¥¼ ë˜ì ¸ì¤Œ
 		}
 	}
 	int top() {
@@ -79,7 +79,7 @@ public:
 			swap(v[1], v[heap_size]);
 			v.pop_back();
 			heap_size--;
-			downheap(1); //1À» ³Ñ±è
+			downheap(1); //1ì„ ë„˜ê¹€
 			return result;
 		}
 	}
