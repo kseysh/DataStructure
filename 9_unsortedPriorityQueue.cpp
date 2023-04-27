@@ -5,12 +5,12 @@ using namespace std;
 
 struct compare {
 	bool operator()(const int& e1, const int& e2) {
-		//operator() ÇÔ¼ö´Â °ıÈ£ ¿¬»êÀÚ ¿À¹ö·Îµù ÇÔ¼öÀÓ.
+		//operator() í•¨ìˆ˜ëŠ” ê´„í˜¸ ì—°ì‚°ì ì˜¤ë²„ë¡œë”© í•¨ìˆ˜ì„.
 		return e1 < e2;
 	}
 };
 
-class unsortedSeqPQ { // »ğÀÔ Á¤·Ä
+class unsortedSeqPQ { // ì‚½ì… ì •ë ¬
 public:
 	vector<int> seq;
 
@@ -57,7 +57,7 @@ public:
 
 	void insertionSort() {
 		if (empty(seq)) {
-			cout << -1 << endl;//ºñ¾îÀÖÀ» ½Ã -1 Ãâ·Â
+			cout << -1 << endl;//ë¹„ì–´ìˆì„ ì‹œ -1 ì¶œë ¥
 			return;
 		}
 		vector<int> pq;
@@ -76,7 +76,7 @@ public:
 
 	void print() {
 		if (empty(seq)) {
-			cout << -1 << endl;//ºñ¾îÀÖÀ» ½Ã -1 Ãâ·Â
+			cout << -1 << endl;//ë¹„ì–´ìˆì„ ì‹œ -1 ì¶œë ¥
 			return;
 		}
 		for (int i = 0; (unsigned int)i < seq.size(); i++) {
@@ -101,10 +101,10 @@ int main() {
 		}
 		else if (command == "empty") {
 			if (pq.empty(pq.seq)) {
-				cout << 1 << endl; // ºñ¾îÀÖ´Ù¸é 1 ¹İÈ¯
+				cout << 1 << endl; // ë¹„ì–´ìˆë‹¤ë©´ 1 ë°˜í™˜
 			}
 			else {
-				cout << 0 << endl; // ¾Èºñ¾îÀÖ´Ù¸é 0 ¹İÈ¯
+				cout << 0 << endl; // ì•ˆë¹„ì–´ìˆë‹¤ë©´ 0 ë°˜í™˜
 			}
 
 		}
