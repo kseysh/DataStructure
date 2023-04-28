@@ -21,15 +21,19 @@ public:
 	bool empty() {
 		return (seq.size() == 0);
 	}
-	void insert(int e) {
+	void insert(int data) {
+		seq.push_back(data);
+
+	}
+	void insertion(int e,vector<int>& v) {
 		compare C;
 		int idx = 0;
-		for (idx = 0; (unsigned int)idx < seq.size(); idx++) {
-			if (C(seq[idx], e)) {
+		for (idx = 0; (unsigned int)idx < v.size(); idx++) {
+			if (C(v[idx], e)) {
 				break;
 			}
 		}
-		seq.insert(seq.begin() + idx, e);
+		v.insert(v.begin() + idx, e);
 	}
 	int min() {
 		if (empty()) {
@@ -50,7 +54,10 @@ public:
 		vector<int> pq;
 		int size = seq.size();
 		for (int i = 0; i < size; i++) {
-			pq.push_back(removeMin());
+			int data = seq.back();
+			seq.pop_back();
+			insertion(data, pq);
+
 		}
 		for (int i = 0; i < size; i++) {
 			seq.push_back(pq.back());
