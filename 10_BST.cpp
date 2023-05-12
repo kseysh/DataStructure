@@ -121,7 +121,7 @@ public:
 	int printDepth(node* v) {
 		if (v->parent == NULL) {
 			return depth;
-			//depth = 0; //void·Î printÇÒ ¶§´Â ÇÊ¿ä
+			//depth = 0; //voidÂ·ÃŽ printÃ‡Ã’ Â¶Â§Â´Ã‚ Ã‡ÃŠÂ¿Ã¤
 		}
 		else {
 			depth++;
