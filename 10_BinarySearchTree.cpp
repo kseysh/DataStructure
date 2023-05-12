@@ -74,21 +74,21 @@ public:
 			return;
 		}
 
-		node* parNode = delNode->parent;	// »èÁ¦ÇÒ ³ëµåÀÇ ºÎ¸ð ³ëµåÀÇ ÁÖ¼Ò¸¦ ÀúÀåÇÏ´Â º¯¼ö
-		node* childNode;					// »èÁ¦ÇÒ ³ëµåÀÇ ºÎ¸ð ³ëµå¿¡ »õ·Ó°Ô ¿¬°áÇÒ ÀÚ½ÄÀÇ ÁÖ¼Ò¸¦ ÀúÀåÇÏ´Â º¯¼ö
+		node* parNode = delNode->parent;	// ì‚­ì œí•  ë…¸ë“œì˜ ë¶€ëª¨ ë…¸ë“œì˜ ì£¼ì†Œë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
+		node* childNode;					// ì‚­ì œí•  ë…¸ë“œì˜ ë¶€ëª¨ ë…¸ë“œì— ìƒˆë¡­ê²Œ ì—°ê²°í•  ìžì‹ì˜ ì£¼ì†Œë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
 
-		if (delNode->left == NULL && delNode->right == NULL) {	// »èÁ¦ÇÒ ³ëµåÀÇ ÀÚ½ÄÀÌ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì
+		if (delNode->left == NULL && delNode->right == NULL) {	// ì‚­ì œí•  ë…¸ë“œì˜ ìžì‹ì´ ì¡´ìž¬í•˜ì§€ ì•ŠëŠ” ê²½ìš°
 			childNode = NULL;
 		}
-		else if (delNode->left == NULL && delNode->right != NULL) {	// »èÁ¦ÇÒ ³ëµåÀÇ ¿À¸¥ÂÊ ÀÚ½Ä¸¸ Á¸ÀçÇÏ´Â °æ¿ì
+		else if (delNode->left == NULL && delNode->right != NULL) {	// ì‚­ì œí•  ë…¸ë“œì˜ ì˜¤ë¥¸ìª½ ìžì‹ë§Œ ì¡´ìž¬í•˜ëŠ” ê²½ìš°
 			childNode = delNode->right;
 		}
-		else if (delNode->left == NULL && delNode->right == NULL) {	// »èÁ¦ÇÒ ³ëµåÀÇ ¿ÞÂÊ ÀÚ½Ä¸¸ Á¸ÀçÇÏ´Â °æ¿ì
+		else if (delNode->left == NULL && delNode->right == NULL) {	// ì‚­ì œí•  ë…¸ë“œì˜ ì™¼ìª½ ìžì‹ë§Œ ì¡´ìž¬í•˜ëŠ” ê²½ìš°
 			childNode = delNode->left;
 		}
-		else {									// »èÁ¦ÇÒ ³ëµåÀÇ ÀÚ½ÄÀÌ µÑ ´Ù Á¸ÀçÇÏ´Â °æ¿ì
+		else {									// ì‚­ì œí•  ë…¸ë“œì˜ ìžì‹ì´ ë‘˜ ë‹¤ ì¡´ìž¬í•˜ëŠ” ê²½ìš°
 			childNode = delNode->right;
-			while (childNode->left != NULL) {	// ¿À¸¥ÂÊ ¼­ºêÆ®¸®¿¡¼­ °¡Àå °¡±î¿î °ª(°¡Àå ¿ÞÂÊ) Å½»ö					
+			while (childNode->left != NULL) {	// ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ì—ì„œ ê°€ìž¥ ê°€ê¹Œìš´ ê°’(ê°€ìž¥ ì™¼ìª½) íƒìƒ‰					
 				childNode = childNode->left;
 			}
 			delNode->key = childNode->key;
@@ -96,18 +96,18 @@ public:
 			parNode = delNode->parent;
 			childNode = delNode->right;
 		}
-		if (parNode == NULL) {// ºÎ¸ð°¡ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì, Áï root¸¦ »èÁ¦ÇÏ´Â °æ¿ì
+		if (parNode == NULL) {// ë¶€ëª¨ê°€ ì¡´ìž¬í•˜ì§€ ì•ŠëŠ” ê²½ìš°, ì¦‰ rootë¥¼ ì‚­ì œí•˜ëŠ” ê²½ìš°
 			root = childNode;
 			root->parent = NULL;
 		}
-		else if (delNode == parNode->left) {// »èÁ¦ÇÒ ³ëµå°¡ ºÎ¸ðÀÇ ¿ÞÂÊ ÀÚ½ÄÀÎ °æ¿ì
-			parNode->left = childNode;		// childNode¸¦ ºÎ¸ðÀÇ »õ·Î¿î ¿ÞÂÊ ÀÚ½ÄÀ¸·Î ¿¬°á
+		else if (delNode == parNode->left) {// ì‚­ì œí•  ë…¸ë“œê°€ ë¶€ëª¨ì˜ ì™¼ìª½ ìžì‹ì¸ ê²½ìš°
+			parNode->left = childNode;		// childNodeë¥¼ ë¶€ëª¨ì˜ ìƒˆë¡œìš´ ì™¼ìª½ ìžì‹ìœ¼ë¡œ ì—°ê²°
 			if (childNode != NULL) {
 				childNode->parent = parNode;
 			}
 		}
-		else {								// »èÁ¦ÇÒ ³ëµå°¡ ºÎ¸ðÀÇ ¿À¸¥ÂÊ ÀÚ½ÄÀÌ¾ú´ø °æ¿ì
-			parNode->right = childNode;		// childNode¸¦ ºÎ¸ðÀÇ »õ·Î¿î ¿À¸¥ÂÊ ÀÚ½ÄÀ¸·Î ¿¬°á
+		else {								// ì‚­ì œí•  ë…¸ë“œê°€ ë¶€ëª¨ì˜ ì˜¤ë¥¸ìª½ ìžì‹ì´ì—ˆë˜ ê²½ìš°
+			parNode->right = childNode;		// childNodeë¥¼ ë¶€ëª¨ì˜ ìƒˆë¡œìš´ ì˜¤ë¥¸ìª½ ìžì‹ìœ¼ë¡œ ì—°ê²°
 			if (childNode != NULL) {
 				childNode->parent = parNode;
 			}
@@ -118,7 +118,7 @@ public:
 	int printDepth(node* v) {
 		if (v->parent == NULL) {
 			return depth;
-			//depth = 0; //void·Î printÇÒ ¶§´Â ÇÊ¿ä
+			//depth = 0; //voidë¡œ printí•  ë•ŒëŠ” í•„ìš”
 		}
 		else {
 			depth++;
