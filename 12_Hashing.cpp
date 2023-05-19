@@ -10,19 +10,19 @@ struct entry {
 	string value;
 	int valid;
 
-	entry() {// ºñ¾îÀÖ´Â ¿£Æ®¸® »ı¼ºÀÚ
+	entry() {// ë¹„ì–´ìˆëŠ” ì—”íŠ¸ë¦¬ ìƒì„±ì
 		key = 0;
 		value = "";
 		valid = NOITEM;
 	}
 
-	entry(int key, string value) { // µ¥ÀÌÅÍ°¡ ÀúÀåµÈ ¿£Æ®¸® »ı¼ºÀÚ
+	entry(int key, string value) { // ë°ì´í„°ê°€ ì €ì¥ëœ ì—”íŠ¸ë¦¬ ìƒì„±ì
 		this->key = key;
 		this->value = value;
 		valid = ISITEM;
 	}
 
-	void erase() {// ¿£Æ®¸®¸¦ Available·Î º¯°æ
+	void erase() {// ì—”íŠ¸ë¦¬ë¥¼ Availableë¡œ ë³€ê²½
 		valid = AVAILABLE;
 	}
 };
@@ -41,10 +41,10 @@ public:
 		return;
 	}
 	void put(int key, string value) {
-		int index = hashFnc(key);// Ã¹ ¹øÂ° Á¶»ç À§Ä¡´Â ÇØ½ÃÇÔ¼öÀÇ °á°ú°ª
-		int probe = 1;//Á¶»çÈ½¼ö
+		int index = hashFnc(key);// ì²« ë²ˆì§¸ ì¡°ì‚¬ ìœ„ì¹˜ëŠ” í•´ì‹œí•¨ìˆ˜ì˜ ê²°ê³¼ê°’
+		int probe = 1;//ì¡°ì‚¬íšŸìˆ˜
 
-		while (table[index].valid == ISITEM && probe <= capacity) {// ¼¿¿¡ µ¥ÀÌÅÍ°¡ ÀúÀåµÇ¾îÀÖÀ¸¸é °è¼Ó
+		while (table[index].valid == ISITEM && probe <= capacity) {// ì…€ì— ë°ì´í„°ê°€ ì €ì¥ë˜ì–´ìˆìœ¼ë©´ ê³„ì†
 
 			index = hashFnc(index + 1); // linear probing
 			probe++;
@@ -53,16 +53,16 @@ public:
 		if (probe > capacity) {
 			return;
 		}
-		table[index] = entry(key, value); // hash tableÀÇ indexÀ§Ä¡¿¡ ¿ø¼Ò»ğÀÔ
+		table[index] = entry(key, value); // hash tableì˜ indexìœ„ì¹˜ì— ì›ì†Œì‚½ì…
 		return;
 	}
 	void erase(int key) {
 		int index = hashFnc(key);
 		int probe = 1;
 
-		while (table[index].valid != NOITEM && probe <= capacity) {// ¼¿¿¡ µ¥ÀÌÅÍ°¡ ÀÖ°Å³ª availableÀÌ¸é Å½»öÁö¼Ó
+		while (table[index].valid != NOITEM && probe <= capacity) {// ì…€ì— ë°ì´í„°ê°€ ìˆê±°ë‚˜ availableì´ë©´ íƒìƒ‰ì§€ì†
 			if (table[index].valid == ISITEM && table[index].key == key) {
-				table[index].erase();// »èÁ¦ÇÒ key¿Í ÀÏÄ¡ÇÏ´Â key¸¦ °¡Áø ¿£Æ®¸®¸¦ Ã£À¸¸é »èÁ¦ÇÏ°í ÇÔ¼ö Á¾·á
+				table[index].erase();// ì‚­ì œí•  keyì™€ ì¼ì¹˜í•˜ëŠ” keyë¥¼ ê°€ì§„ ì—”íŠ¸ë¦¬ë¥¼ ì°¾ìœ¼ë©´ ì‚­ì œí•˜ê³  í•¨ìˆ˜ ì¢…ë£Œ
 				cout << 1 << probe <<endl;
 				return;
 			}
