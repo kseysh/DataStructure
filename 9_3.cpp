@@ -10,10 +10,10 @@ public:
 	void insert(int e, vector<int>& v) {
 		v.push_back(e);
 	}
-	int removeMin(vector<int>& v) {
+	int removeMin(vector<int>& v) { // removeMin return «ÿ¡÷±‚!!
 		int maxIdx = 0;
 
-		for (int i = 0; (unsigned int)i < v.size(); i++) {
+		for (int i = 0; i < v.size(); i++) {
 			if (v[i] > v[maxIdx]) {
 				maxIdx = i;
 			}
@@ -29,7 +29,7 @@ int main() {
 	cin >> t;
 	for (int i = 0; i < t; i++) {
 		unsortedSeqPQ pq;
-		vector<int> temp;
+		vector<int> sortedArr;
 		vector<int> sum;
 		cin >> n;
 		for (int j = 0; j < n; j++) {
@@ -37,13 +37,13 @@ int main() {
 			pq.insert(num,pq.seq);
 		}
 		for (int j = 0; j < n; j++) {
-			temp.push_back(pq.removeMin(pq.seq));
+			sortedArr.push_back(pq.removeMin(pq.seq));
 			if (j != 0) {
-				sum.push_back(temp.front() - temp.back());
+				sum.push_back(sortedArr.front() - sortedArr.back());
 			}
 		}
 		for (int j = 0; j < n; j++) {
-			cout << temp[j] << " ";
+			cout << sortedArr[j] << " ";
 		}
 		cout << endl;
 		for (int j = 0; j < n - 1; j++) {

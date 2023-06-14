@@ -17,10 +17,10 @@ public:
 	bool empty() {
 		return (arr.size() == 1);
 	}
-	void swap(int idx1, int idx2) {
-		arr[0] = arr[idx1];
-		arr[idx1] = arr[idx2];
-		arr[idx2] = arr[0];
+	void swap(int& idx1, int& idx2) {
+		int temp = idx1;
+		idx1 = idx2;
+		idx2 = temp;
 	}
 	void insert(int e) {
 		arr.push_back(e);
@@ -28,19 +28,16 @@ public:
 	}
 	int removeMin() {
 		int min = arr[1];
-		swap(1, size());
+		swap(arr[1], arr[size()]);
 		arr.pop_back();
 		downHeap(1);
 		return min;
 	}
 
 	void upHeap(int idx) {
-		if (idx == 1) {
-			return;
-		}
 		int parent = idx / 2;
 		if (arr[parent] > arr[idx]) {
-			swap(parent, idx);
+			swap(arr[parent], arr[idx]);
 			upHeap(parent);
 		}
 	}
@@ -48,25 +45,26 @@ public:
 	void downHeap(int idx) {
 		int left = 2 * idx;
 		int right = 2 * idx + 1;
-		int child;
 
-		if (left > size()) {
-			return;
-		}
-		else if (left == size()) {
-			child = left;
-		}
-		else {
-			if (arr[left] <= arr[right]) {
-				child = left;
-			}
-			else {
-				child = right;
+		if (left == size()) {
+			if (arr[left] < arr[idx]) {
+				swap(arr[left], arr[idx]);
+				downHeap(left);
 			}
 		}
-		if (arr[child] < arr[idx]) {
-			swap(child, idx);
-			downHeap(child);
+		else if (left <= size() && right <= size()) {
+			if (arr[idx] > arr[left] || arr[idx] > arr[right]) {
+				if (arr[left] <= arr[right]) {
+					swap(arr[left], arr[idx]);
+					downHeap(left);
+
+				}
+				else {
+					swap(arr[right], arr[idx]);
+					downHeap(right);
+				}
+			}
+
 		}
 	}
 

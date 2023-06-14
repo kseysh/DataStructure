@@ -19,7 +19,7 @@ public:
 	int count = 0;
 	BST() {
 		root = NULL;
-		this->depth = 0;
+		this->depth = 0;//count와 depth 초기화 시켜주는 것 까먹지 않기!!
 		this->count = 0;
 	}
 	node* search(node* curNode, int key) {
@@ -73,9 +73,7 @@ public:
 	}
 	void remove(int key) {
 		node* delNode = search(root, key);
-		if (delNode == NULL) {
-			return;
-		}
+
 		cout << printDepth(delNode) << endl;
 		depth = 0;
 
@@ -97,11 +95,15 @@ public:
 			while (childNode->left != nullptr) {	// 오른쪽 서브트리에서 가장 가까운 값(가장 왼쪽) 탐색					
 				childNode = childNode->left;
 			}
-			delNode->key = childNode->key;
-			delNode = childNode;
-			parNode = delNode->parent;
-			childNode = delNode->right;
-		}
+			delNode->key = childNode->key; // inorder-successor의 key를 부여해줌 (위쪽은 이것만 해주면 된다.)
+			//아래부터 바뀐 delnode의 삭제과정
+			delNode = childNode;// delnode를 삭제할 아래 노드로 변경해줌
+			parNode = delNode->parent; // delnode의 parent와 child를 연결하기 위해 parent와 child를 가져온다.
+			childNode = delNode->right; // inorder-success는 왼쪽 자식이 있을 수 없으므로 오른쪽 자식만 가져옴.
+		}								//만약 자식이 없더라도 childnode를 NULL로 받는다.
+
+		//아래부터는 parnode만 신경쓰면 된다. childnode는 신경 x
+		//parnode가 null일때, 부모의 왼쪽 자식일 때, 오른쪽 자식일 때만 신경쓰기
 		if (parNode == NULL) {// 부모가 존재하지 않는 경우, 즉 root를 삭제하는 경우
 			root = childNode;
 			root->parent = NULL;
@@ -121,10 +123,9 @@ public:
 		delete delNode;
 
 	}
-	int printDepth(node* v) {
+	int printDepth(node* v) {//class 변수로 depth를 사용시 항상 초기화 해주기
 		if (v->parent == NULL) {
 			return depth;
-			//depth = 0; //void로 print할 때는 필요
 		}
 		else {
 			depth++;
@@ -136,13 +137,13 @@ public:
 		if (current->left == NULL && current->right == NULL) {
 			return 0;
 		}
-		else if (current->left == NULL && current->right != NULL) {
+		else if (current->left == NULL && current->right != NULL) {	//오른쪽 자식만 있는 경우
 			return printHeight(current->right) + 1;
 		}
-		else if (current->left != NULL && current->right == NULL) {
+		else if (current->left != NULL && current->right == NULL) {	//좌측 자식만 있는 경우
 			return printHeight(current->left) + 1;
 		}
-		else {
+		else {														//자식이 둘 다 있는 경우
 			int max = 0;
 			if (printHeight(current->left) > printHeight(current->right)) {
 				return printHeight(current->left) + 1;
@@ -159,11 +160,11 @@ public:
 		}
 		if (++count == k) {
 			cout << current->key << endl;
+			return;
 		}
 		if (current->right != NULL) {
 			inOrder(current->right,k);
 		}
-
 	}
 
 	void printMin(int k) {
@@ -171,7 +172,7 @@ public:
 		count = 0;
 	}
 
-};
+}; // insert,delete,printMin 이외에는 모두 node* 파라미터를 사용한다.
 
 int main() {
 	int t,x;
@@ -194,7 +195,7 @@ int main() {
 		}
 		else if (command == "height") {
 			cin >> x;
-			cout << tree.printHeight(tree.search(tree.root,x)) <<endl;
+			cout << tree.printHeight(tree.search(tree.root,x)) <<endl;// 유일하게 cmd인데 node*로 받는 함수
 		}
 	}
 	return 0;

@@ -13,7 +13,7 @@ public:
 	}
 	int removeMin() {
 		int maxIdx = 0;
-		for (int i = 0; (unsigned int)i < seq.size(); i++) {
+		for (int i = 0; i < seq.size(); i++) {
 			if (seq[i]%5==0) {
 				if (seq[maxIdx] % 5 != 0) {
 					maxIdx = i;

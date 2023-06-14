@@ -8,16 +8,16 @@ public:
 	vector<int> seq;
 	void insertion(int e) {
 		int idx = 0;
-		for (idx = 0; idx < seq.size(); idx++) {
+		for (idx = 0; idx < seq.size(); idx++) {// idx가 마지막에 seq.size()와 같아져서 for문이 끝나는 것
 			if (seq[idx]< e) {
 				break;
 			}
 		}
-		seq.insert(seq.begin() + idx, e);
+		seq.insert(seq.begin() + idx, e); // 따라서 이렇게 하면 맨 뒤에 insert된다.
 	}
 	int removeMin() {
 		int minVal = seq.back();
-		seq.pop_back();
+		seq.pop_back();//스택을 사용하므로, 최소 힙이면 최솟값이 가장 뒤에 가게 정렬해야 한다.
 		return minVal;
 	}
 };
@@ -27,7 +27,7 @@ int main() {
 	cin >> t;
 	for (int i = 0; i < t; i++) {
 		sortedSeqPQ pq;
-		vector<int> temp;
+		vector<int> sortedArr;
 		vector<int> sum;
 		cin >> n;
 		for (int j = 0; j < n; j++) {
@@ -35,13 +35,13 @@ int main() {
 			pq.insertion(num);
 		}
 		for (int j = 0; j < n; j++) {
-			temp.push_back(pq.removeMin());
+			sortedArr.push_back(pq.removeMin());
 			if (j != 0) {
-				sum.push_back(temp.front() + temp.back());
+				sum.push_back(sortedArr.front() + sortedArr.back());
 			}
 		}
 		for (int j = 0; j < n; j++) {
-			cout << temp[j] << " ";
+			cout << sortedArr[j] << " ";
 		}
 		cout << endl;
 		for (int j = 0; j < n-1; j++) {
