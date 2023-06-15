@@ -6,7 +6,7 @@ using namespace std;
 class sortedSeqPQ { // 삽입 정렬
 public:
 	vector<int> seq;
-	void insertion(int e) {
+	void insertion(int e) {// pq는 이것만 기억해 놓으면 될 듯!
 		int idx = 0;
 		for (idx = 0; idx < seq.size(); idx++) {// idx가 마지막에 seq.size()와 같아져서 for문이 끝나는 것
 			if (seq[idx]< e) {

@@ -39,8 +39,8 @@ public:
 		node* curNode = root;
 		node* parNode = NULL;
 
-		while (curNode != NULL) {// 이 문장이 뒤로 가면 마지막에 parent와 current가 모두 null인채로 while문이 끝남
-			parNode = curNode;
+		while (curNode != NULL) {
+			parNode = curNode;			// 이 문장이 뒤로 가면 마지막에 parent와 current가 모두 null인채로 while문이 끝남
 			if (curNode->key < key) {
 				curNode = curNode->right;
 			}

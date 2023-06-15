@@ -19,7 +19,7 @@ public:
             cout << "Exist" << endl;
             return;
         }
-        adjacencyMatrix[vertex][vertex] = true;
+        adjacencyMatrix[vertex][vertex] = true;// 이거 찾을 때 유용하니 꼭 해놓을 것
         vertexList.push_back(vertex);
     }
 
@@ -39,10 +39,8 @@ public:
             if (vertex == vertexList[i]) {
                 vertexIdx = i;
             }
-            else if(adjacencyMatrix[vertex][vertexList[i]]){
-                adjacencyMatrix[vertex][vertexList[i]] = false;
-                adjacencyMatrix[vertexList[i]][vertex] = false;
-            }
+            adjacencyMatrix[vertex][vertexList[i]] = false;
+            adjacencyMatrix[vertexList[i]][vertex] = false;
         }
         vertexList.erase(vertexList.begin() + vertexIdx);
 
@@ -74,7 +72,7 @@ public:
                     currentEdgeCount++;
                 }
             }
-            if (maxVertexIdx == 200000) {
+            if (maxVertexIdx == 200000) { // 중요!
                 maxVertexIdx = i;
             }
 

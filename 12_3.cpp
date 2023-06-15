@@ -27,7 +27,7 @@ struct entry {
 	}
 };
 
-class hashTable {
+class hashTable { // 해쉬테이블은 조사하는 것만 알면 put, erase find 모두 다 가능
 private:
 	entry* table;
 	int capacity;
@@ -52,13 +52,8 @@ public:
 		int probe = 1;//조사횟수
 
 		while (table[index].valid == ISITEM && probe <= capacity) {// 셀에 데이터가 저장되어있으면 계속
-
-			index = (hashFnc(key) + probe * doubleHashFnc(key)) % capacity; // linear probing
+			index = (hashFnc(key) + probe * doubleHashFnc(key)) % capacity; 
 			probe++;
-
-		}
-		if (probe > capacity) {
-			return;
 		}
 		table[index] = entry(key, value); // hash table의 index위치에 원소삽입
 		cout << probe + index << endl;

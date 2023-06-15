@@ -95,6 +95,7 @@ public:
 			while (childNode->left != nullptr) {	// 오른쪽 서브트리에서 가장 가까운 값(가장 왼쪽) 탐색					
 				childNode = childNode->left;
 			}
+			// 틀렸던 내용 : 자식이 두개 일 때 위치 바꾸는 것 잊지 않기
 			delNode->key = childNode->key; // inorder-successor의 key를 부여해줌 (위쪽은 이것만 해주면 된다.)
 			//아래부터 바뀐 delnode의 삭제과정
 			delNode = childNode;// delnode를 삭제할 아래 노드로 변경해줌
@@ -124,7 +125,7 @@ public:
 
 	}
 	int printDepth(node* v) {//class 변수로 depth를 사용시 항상 초기화 해주기
-		if (v->parent == NULL) {
+		if (v->parent == NULL) { // while로 depth를 찾으면 초기화 안해도 됨
 			return depth;
 		}
 		else {
@@ -133,25 +134,27 @@ public:
 		}
 	}
 
+
 	int printHeight(node* current) {
+		int left = 0;
+		int right = 0;
 		if (current->left == NULL && current->right == NULL) {
 			return 0;
 		}
-		else if (current->left == NULL && current->right != NULL) {	//오른쪽 자식만 있는 경우
-			return printHeight(current->right) + 1;
+		if (current->left != NULL) {
+			left = printHeight(current->left);
 		}
-		else if (current->left != NULL && current->right == NULL) {	//좌측 자식만 있는 경우
-			return printHeight(current->left) + 1;
+		if (current->right != NULL) {
+			right = printHeight(current->right);
 		}
-		else {														//자식이 둘 다 있는 경우
-			int max = 0;
-			if (printHeight(current->left) > printHeight(current->right)) {
-				return printHeight(current->left) + 1;
-			}
-			else {
-				return printHeight(current->right) + 1;
-			}
+		if (left > right) {
+			return left + 1;
 		}
+		else {
+			return right + 1;
+		}
+		
+
 	}
 
 	void inOrder(node* current,int k) {

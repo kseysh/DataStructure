@@ -2,13 +2,12 @@
 #include <vector>
 #include <queue>
 using namespace std;
-const int MAX_VERTICES = 1001;
+const int MAX_VERTICES = 101;
 
 class Graph {
 public:
 
     vector<int> adjacencyList[MAX_VERTICES]; // adjacencyList
-    bool visited[MAX_VERTICES]; // 탐색 시 visited 했는지의 정보를 저장하는 array
     int visitOrder[MAX_VERTICES]; // 탐색 시 방문한 순서를 저장하는 array
     int currentIndex;
     int maxIndex;
@@ -18,11 +17,10 @@ public:
     }
 
     void DFS(int vertex) {
-        visited[vertex] = true;
         visitOrder[vertex] = ++currentIndex;
         for (int i = 0; i < adjacencyList[vertex].size(); i++) {
             int nextVertex = adjacencyList[vertex][i];
-            if (!visited[nextVertex]) {
+            if (visitOrder[nextVertex]==0) {
                 DFS(nextVertex);
             }
         }
@@ -31,13 +29,9 @@ public:
         }
     }
 
-    int getVisitOrder(int vertex) {
-        return visitOrder[vertex];// visitOrder에 방문한 순서를 저장해 놓았으므로 이렇게 하면 바로 출력이 가능하다.
-    }
 
-    void initialize(int N) {
-        for (int i = 1; i <= N; i++) {
-            visited[i] = false;
+    void initialize() {// 그냥 1000으로 하기
+        for (int i = 0; i < 101; i++) {
             visitOrder[i] = 0;
         }
         currentIndex = 0;
@@ -57,7 +51,7 @@ int main() {
         }
         for (int j = 0; j < q; j++) {
             cin >> x;
-            graph.initialize(n);
+            graph.initialize();
             graph.DFS(x);
             cout << graph.maxIndex << endl;
         }

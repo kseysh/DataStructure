@@ -3,7 +3,7 @@
 using namespace std;
 #define NOITEM 0
 #define ISITEM 1
-#define AVAILABLE 2
+#define AVAILABLE 2 // Available일때는 항상 탐색을 지속한다, 이후에 원하는 것이 noitem일 때인지 isitem일때인지 구분할 것
 
 struct entry {
 	string id;
@@ -56,12 +56,9 @@ public:
 				cout << "Invalid " << table[index].pw << endl;
 				return;
 			}
-			index = hashFnc(id, probe); // linear probing
+			index = hashFnc(id, probe);
 			probe++;
 
-		}
-		if (probe > capacity) {
-			return;
 		}
 		cout << "Submit" << endl;
 		table[index] = entry(id, pw); // hash table의 index위치에 원소삽입

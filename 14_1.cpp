@@ -6,7 +6,6 @@ const int MAX_VERTICES = 1001;
 class Graph {
 private:
     vector<int> adjacencyList[MAX_VERTICES]; // adjacencyList
-    bool visited[MAX_VERTICES]; // 탐색 시 visited 했는지의 정보를 저장하는 array
     int visitOrder[MAX_VERTICES]; // 탐색 시 방문한 순서를 저장하는 array
     int currentIndex;
 
@@ -17,12 +16,10 @@ public:
     }
 
     void DFS(int vertex) {
-        visited[vertex] = true;
         visitOrder[vertex] = ++currentIndex;
-
         for (int i = 0; i < adjacencyList[vertex].size(); i++) {
-            int nextVertex = adjacencyList[vertex][i];
-            if (!visited[nextVertex]) {
+            int nextVertex = adjacencyList[vertex][i];//이게 중요!
+            if (visitOrder[nextVertex]==0) {
                 DFS(nextVertex);
             }
         }
@@ -34,7 +31,6 @@ public:
 
     void initialize(int N) {
         for (int i = 1; i <= N; i++) {
-            visited[i] = false;
             visitOrder[i] = 0;
         }
         currentIndex = 0;
